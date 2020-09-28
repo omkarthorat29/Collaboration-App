@@ -1,0 +1,22 @@
+done .... Add sugar part for patient			
+done .... Create new hospital and hospital Validity 
+done .... user verification 
+done .... verified not verified section update ui
+done .... Recharge Section
+done .... chat Forward req..		
+done .... notification image  update and also check weather its working on offline mode 	
+done .... all Images fix
+
+
+offline online status
+user email password update				
+aws ec2 instance and upload nodejs run 	
+--------------------------------------------------------------------------------------------------------
+make video
+do marketing
+generate leads
+finalise order					
+get feedback
+publish to playstore
+earn money
+--------------------------------------------------------------------------------------------------------
