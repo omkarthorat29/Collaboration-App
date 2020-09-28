@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var passport = require("passport");
 var mongoose = require("mongoose");
 var config = require("./config/config");
-var port = process.env.PORT || 5000;
+var port = 5000;
 var cors = require("cors");
 
 var app = express();
@@ -69,10 +69,12 @@ connection.on("error", (err) => {
 });
 
 // Start the server
-
-app
-  .get("server")
-  .listen(port, () =>
-    console.log(`Server Started at: http://localhost:${port}`)
-  );
+server.listen(5000, () =>
+  console.log(`Server Started at: http://localhost:${port}`)
+);
+// app
+//   .get("server")
+//   .listen(5000, () =>
+//     console.log(`Server Started at: http://localhost:${port}`)
+//   );
 //console.log("Server Started at: http://localhost:" + port);

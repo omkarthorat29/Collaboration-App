@@ -68,7 +68,7 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ["192.168.0.3:5000"],
+        allowedDomains: ["192.168.0.2:5000"],
       },
     }),
   ],
