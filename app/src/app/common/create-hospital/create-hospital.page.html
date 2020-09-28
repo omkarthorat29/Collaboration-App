@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="heading">Create Hospital</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="input">
+    <div class="label">Name</div>
+    <ion-input [(ngModel)]="data.name" type="text" autofocus="true"></ion-input>
+  </div>
+  <div class="input">
+    <div class="label">Address</div>
+    <ion-input [(ngModel)]="data.address" type="text"></ion-input>
+  </div>
+
+  <div class="input">
+    <div class="label">Phone Number</div>
+    <ion-input [(ngModel)]="data.phone" type="text"></ion-input>
+  </div>
+
+  <ion-button class="prime-btn" (click)="create()" mode="ios" expand="block"
+    >Create</ion-button
+  >
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-button class="no-color-btn" mode="ios" expand="block"
+    >Don't have an account ?</ion-button
+  >
+</ion-footer>

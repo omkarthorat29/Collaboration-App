@@ -1,0 +1,51 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Send Image</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="!imageUrl">
+    <ion-text color="medium" *ngIf="!this.imageUrl">
+      <h2 class="ion-padding">
+        <img src="../../../assets/upload.png" />
+      </h2>
+    </ion-text>
+
+    <ion-button
+      (click)="chooseImageOption()"
+      mode="ios"
+      class="ion-padding"
+      expand="block"
+    >
+      Choose Image
+    </ion-button>
+  </div>
+
+  <div *ngIf="imageUrl">
+    <ion-slides [options]="sliderOpts" zoom mode="ios">
+      <ion-slide>
+        <img src="{{ imageUrl }}" alt="" />
+      </ion-slide>
+    </ion-slides>
+    <div class="ion-padding" style="margin-top: 10px;">
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea [(ngModel)]="textContent"></ion-textarea>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button
+    style="margin-bottom: 20px;"
+    mode="ios"
+    (click)="send()"
+    class="ion-padding"
+    expand="block"
+  >
+    Send
+  </ion-button>
+</ion-footer>

@@ -1,0 +1,32 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{role | uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Searchbar with cancel button shown on focus -->
+  <ion-searchbar mode="ios"></ion-searchbar>
+
+  <ion-item
+    *ngFor="let a of user"
+    style="cursor: pointer;"
+    (click)="this.rt.navigateByUrl('personal-chat/'+a._id+'/'+a.role)"
+  >
+    <ion-avatar slot="start">
+      <img src="{{a.profile || '../../../assets/avatar.png'}}" />
+    </ion-avatar>
+    <ion-label
+      ><h2>{{a.fullname | titlecase}}</h2>
+      <p>{{a.email}}</p>
+    </ion-label>
+    <p>
+      <span style="color: rgb(85, 136, 34);" class="ion-float-right"
+        >online</span
+      >
+    </p>
+  </ion-item>
+</ion-content>

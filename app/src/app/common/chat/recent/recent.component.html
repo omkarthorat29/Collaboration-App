@@ -1,0 +1,23 @@
+<!-- Searchbar with cancel button shown on focus -->
+<ion-searchbar (ionInput)="findEL($event)" mode="ios"></ion-searchbar>
+<ion-list>
+  <ion-item
+    *ngFor="let a of recentUsers"
+    (click)="
+      this.rt.navigateByUrl('personal-chat/' + a.user._id + '/' + a.user.role)
+    "
+  >
+    <ion-avatar slot="start">
+      <img src="{{ a.user.profile || '../../../../assets/avatar.png' }}" />
+    </ion-avatar>
+    <ion-label>
+      <h5>{{ a.user.fullname | titlecase }}</h5>
+      <p>
+        {{ a.messages[0].content || a.messages[0].type }}
+      </p>
+    </ion-label>
+    <small>
+      {{ a.messages[0].createdAt | date: "short" }}
+    </small>
+  </ion-item>
+</ion-list>

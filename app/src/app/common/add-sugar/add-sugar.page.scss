@@ -1,0 +1,19 @@
+.input {
+  ion-input {
+    border: 1px solid #707070;
+    margin: 10px 0px;
+    border-radius: 10px;
+  }
+}
+.prime-btn {
+  margin: 50px 0px;
+  --background: #684af0 !important;
+  --background-activated: #0b0444d5 !important;
+}
+.no-color-btn {
+  color: blue;
+  font-size: 24px;
+  margin: 0px 10px;
+  --background-activated: transparent !important;
+  --background: transparent !important;
+}

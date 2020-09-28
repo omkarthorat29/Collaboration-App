@@ -1,0 +1,13 @@
+ion-text {
+  text-align: center !important;
+  justify-content: center;
+  img {
+    width: 30%;
+  }
+}
+ion-slides {
+  img {
+    max-height: 60vh;
+    object-fit: contain;
+  }
+}

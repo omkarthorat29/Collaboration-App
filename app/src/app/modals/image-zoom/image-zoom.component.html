@@ -1,0 +1,15 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{ imgContent }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  <ion-slides [options]="sliderOpts" zoom mode="ios">
+    <ion-slide>
+      <img src="{{ img }}" alt="" />
+    </ion-slide>
+  </ion-slides>
+</ion-content>

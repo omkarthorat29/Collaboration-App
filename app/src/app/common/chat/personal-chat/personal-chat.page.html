@@ -1,0 +1,182 @@
+<ion-header mode="md" class="ion-no-border">
+  <ion-toolbar *ngIf="!pressActive && selectedUser">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img
+            [defaultImage]="'../../../../../../assets/avatar.png'"
+            [lazyLoad]="this.selectedUser.profile"
+          />
+        </ion-avatar>
+        <ion-label>
+          <h2>{{selectedUser.fullname}}</h2>
+
+          <!-- <p>
+            <span
+              *ngIf="selectedUser.isOnline == 'yes'"
+              style="color: rgb(85, 136, 34); font-size: 10px"
+              >online</span
+            >
+            <span
+              *ngIf="selectedUser.isOnline == 'no'"
+              style="color: rgb(245, 0, 41); font-size: 10px"
+              >Offline</span
+            >
+          </p> -->
+        </ion-label>
+      </ion-item>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="pressActive && selectedUser">
+    <ion-buttons slot="start" (click)="longPressRelease()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>Solid Buttons</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" (click)="forward()">
+        <ion-icon
+          style="background: none; font-size: 1.5em !important"
+          name="arrow-redo-sharp"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="messages">
+    <div *ngFor="let m of messages.messages">
+      <ion-row
+        [class.longPressedRow]="m._id == pressedId"
+        class="send"
+        *ngIf="m.senderId == auth.id"
+        (press)="longPressActive(m)"
+        (click)="pressSelected(m)"
+      >
+        <ion-col size="8" offset="4">
+          <img
+            *ngIf="m.type == 'image'"
+            [defaultImage]="'../../../../assets/upload.png'"
+            [lazyLoad]="m.url"
+            (click)="openWithInAppBrowser(m.url,m.originalname)"
+            style="border-radius: 10px; margin: 10px 0px"
+          />
+          <div
+            *ngIf="m.type == 'file'"
+            (click)="openWithInAppBrowser(m.url,m.originalname)"
+            style="
+              padding: px;
+              padding: 10px 0px;
+              background: lightblue;
+              margin: 10px 0px;
+              border-radius: 10px;
+            "
+          >
+            <p style="margin: 0; padding: 5px">{{m.originalname}}</p>
+          </div>
+
+          <p style="white-space: break-spaces; margin: 0">{{m.content}}</p>
+
+          <span
+            class="ion-float-right"
+            style="font-size: 0.6em; color: rgb(87, 85, 85); margin-top: 5px"
+            >{{m.createdAt | date:'short'}}
+            <ion-icon
+              name="eye-outline"
+              *ngIf="m.senderId == auth.id && m.isSeen == 'yes'"
+              color="primary"
+            ></ion-icon
+          ></span>
+        </ion-col>
+      </ion-row>
+      <ion-row
+        [class.longPressedRow]="m._id == pressedId"
+        class="receive"
+        *ngIf="m.senderId != auth.id"
+        (press)="longPressActive(m)"
+        (click)="pressSelected(m)"
+      >
+        <ion-col size="8">
+          <img
+            *ngIf="m.type == 'image'"
+            [defaultImage]="'../../../../assets/upload.png'"
+            [lazyLoad]="m.url"
+            (click)="openWithInAppBrowser(m.url,m.originalname)"
+            style="border-radius: 10px; margin: 10px 0px"
+          />
+          <div
+            *ngIf="m.type == 'file'"
+            (click)="openWithInAppBrowser(m.url,m.originalname)"
+            style="
+              padding: px;
+              padding: 10px 0px;
+              background: lightblue;
+              margin: 10px 0px;
+              border-radius: 10px;
+            "
+          >
+            <p style="margin: 0; padding: 5px">{{m.originalname}}</p>
+          </div>
+
+          <p style="white-space: break-spaces; margin: 0">{{m.content}}</p>
+
+          <span
+            class="ion-float-left"
+            style="font-size: 0.6em; color: rgb(87, 85, 85); margin-top: 5px"
+            >{{m.createdAt | date:'short'}}
+            <ion-icon
+              name="eye-outline"
+              *ngIf="m.senderId == auth.id && m.isSeen == 'yes'"
+              color="primary"
+            ></ion-icon
+          ></span>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-row class="ion-align-items-center">
+      <ion-col size="2" *ngIf="show">
+        <ion-icon
+          (click)="presentActionSheet()"
+          style="
+            background-color: rgb(82, 197, 243);
+            color: white;
+            font-size: 20px !important ;
+            padding: 10px !important;
+          "
+          name="attach-outline"
+        ></ion-icon
+      ></ion-col>
+      <ion-col>
+        <textarea
+          class="text-area"
+          id="inputID"
+          [(ngModel)]="textContent"
+          (keyup)="change($event)"
+          autosize
+          [minRows]="1"
+          [maxRows]="1"
+          placeholder="type..."
+        ></textarea>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon
+          (mousedown)="$event.preventDefault();sendMessage('text')"
+          class="ripple-parent"
+          for="inputID"
+          style="background-color: blueviolet; color: white"
+          name="send-outline"
+        ></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

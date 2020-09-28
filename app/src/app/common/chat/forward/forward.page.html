@@ -1,0 +1,31 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Select Users</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="send()">Send</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="findEL($event)" mode="ios"></ion-searchbar>
+  <ion-list>
+    <ion-item
+      [class.selected]="pushToSelectedArray.includes(a.user._id)"
+      *ngFor="let a of recentUsers"
+      (click)="pushToSelected(a.user._id)"
+    >
+      <ion-avatar slot="start">
+        <img src="{{ a.user.profile || '../../../../assets/avatar.png' }}" />
+      </ion-avatar>
+      <ion-label>
+        <h5>{{ a.user.fullname | titlecase }}</h5>
+        <p>{{ a.messages[0].content || a.messages[0].type }}</p>
+      </ion-label>
+      <small> {{ a.messages[0].createdAt | date: "short" }} </small>
+    </ion-item>
+  </ion-list>
+</ion-content>

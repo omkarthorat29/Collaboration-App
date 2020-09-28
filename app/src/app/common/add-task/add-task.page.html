@@ -1,0 +1,19 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Task</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="input">
+    <div class="label">Task Name</div>
+    <ion-input [(ngModel)]="data.name" type="text" autofocus="true"></ion-input>
+  </div>
+
+  <ion-button class="prime-btn" (click)="addTask()" mode="ios" expand="block"
+    >Add Task</ion-button
+  >
+</ion-content>

@@ -1,0 +1,13 @@
+ion-button {
+  margin: 20px 0px;
+}
+ion-toolbar {
+  margin-top: 30px;
+}
+.no-color-btn {
+  color: blue;
+  font-size: 24px;
+  margin: 0px 10px;
+  --background-activated: transparent !important;
+  --background: transparent !important;
+}

@@ -1,0 +1,24 @@
+ion-card {
+  //padding: 0px;
+  box-shadow: none;
+  --background: #3b5998;
+  color: white;
+  border-radius: unset;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+.line {
+  text-decoration: line-through;
+}
+ion-item-sliding {
+  margin: 0px;
+}
+.low {
+  color: blue;
+}
+.high {
+  color: red;
+}
+.normal {
+  color: green;
+}

@@ -1,0 +1,49 @@
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{data.fullname | titlecase}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    *ngIf="!data.profile"
+    style="
+      background: url('../../../assets/avatar.png');
+      height: 30%;
+      background-position: center;
+      background-size: cover;
+    "
+  ></div>
+
+  <img *ngIf="data.profile" src="{{data.profile}}" alt="" srcset="" />
+
+  <div style="text-align: center">
+    <h3 style="color: blue">{{data.role | titlecase}}</h3>
+    <h5>{{data.fullname | titlecase}}</h5>
+    <h6>{{data.email}}</h6>
+    <p>{{data.phone}}</p>
+    <small>Added at :{{data.createdAt | date:"short"}}</small>
+  </div>
+
+  <div *ngIf="userData && userData.role == 'admin'">
+    <ion-button
+      class="prime-btn"
+      *ngIf="data.verified === 'no'"
+      (click)="verify('yes',data._id)"
+      mode="ios"
+      expand="block"
+      >Mark As Verified</ion-button
+    >
+    <ion-button
+      class="prime-btn-nt"
+      *ngIf="data.verified === 'yes'"
+      (click)="verify('no',data._id)"
+      mode="ios"
+      expand="block"
+      >Mark As Not Verified</ion-button
+    >
+  </div>
+</ion-content>

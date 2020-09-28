@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Hospital Chat</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <!-- Segment with anchors -->
+    <!-- Segment with default selection -->
+    <ion-segment (ionChange)="segmentChanged($event)" value="{{value}}">
+      <ion-segment-button value="recent">
+        <ion-label>Recent</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="list">
+        <ion-label>List</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides
+    #slides
+    mode="ios"
+    (ionSlideDidChange)="slideChanged($event)"
+    id="top"
+  >
+    <ion-slide>
+      <app-recent></app-recent>
+    </ion-slide>
+    <ion-slide>
+      <app-list></app-list>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

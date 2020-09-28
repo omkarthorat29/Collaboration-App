@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border" mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Sugar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="input">
+    <div class="label">Sugar Level</div>
+    <ion-input [(ngModel)]="level" type="text" autofocus="true"></ion-input>
+  </div>
+
+  <ion-item>
+    <ion-label>Time</ion-label>
+    <ion-select [(ngModel)]="on_time" mode="ios" interface="popover">
+      <ion-select-option value="Before Meal">Before Meal</ion-select-option>
+      <ion-select-option value="After Meal">After Meal</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button class="prime-btn" (click)="addSugar()" mode="ios" expand="block"
+    >Add Sugar</ion-button
+  >
+</ion-content>

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Hospital User's</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="back" *ngFor="let u of count | async" (click)="navigate(u._id)">
+    <ion-row class="ion-justify-content-between" style="margin-bottom: 20px;">
+      <ion-col size="10">
+        <h5>{{u._id | uppercase}}</h5>
+      </ion-col>
+      <ion-col size="2">
+        <h5>{{u.count}}</h5>
+      </ion-col>
+    </ion-row>
+    <h4>
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </h4>
+  </div>
+</ion-content>

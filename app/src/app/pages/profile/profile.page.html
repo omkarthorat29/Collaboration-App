@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="auth.logout()" color="primary" fill="clear">
+        Log Out
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="data" class="bg">
+    <img
+      [defaultImage]="'../../../assets/avatar.png'"
+      [lazyLoad]="data.profile"
+      [useSrcset]="true"
+    />
+    <!-- <img class="img" src="../../../assets/avatar.png" alt="" srcset="" /> -->
+  </div>
+
+  <ion-badge (click)="presentActionSheet()" class="edit" fill="clear">
+    <ion-icon name="camera"></ion-icon>
+  </ion-badge>
+
+  <!-- Lines -->
+  <ion-spinner *ngIf="spin" name="lines"></ion-spinner>
+
+  <div style="text-align: center" *ngIf="data" class="ion-padding">
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input [(ngModel)]="data.fullname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Phone</ion-label>
+      <ion-input [(ngModel)]="data.phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input [(ngModel)]="data.email"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="this.data.role != 'admin'">
+      <ion-label position="stacked">Hospital Id</ion-label>
+      <ion-input [(ngModel)]="data.hospitalId"></ion-input>
+    </ion-item>
+    <ion-list *ngIf="this.data.role != 'admin' && this.data.role != 'patient'">
+      <ion-item>
+        <ion-label *ngIf="!data.role">Select Role</ion-label>
+        <ion-label *ngIf="data.role">{{data.role | uppercase}}</ion-label>
+        <ion-select [(ngModel)]="data.role" interface="action-sheet">
+          <ion-select-option value="{{r.role}}" *ngFor="let r of roles"
+            >{{r.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="update('Updated')" expand="block" fill="outline">
+          Update
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

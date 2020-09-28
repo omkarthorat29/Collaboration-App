@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="heading"
+      >Register in to <br />
+      Suvarsh Technology</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button
+    mode="ios"
+    (click)="nav.navigateForward('register/pateint')"
+    color="primary"
+    expand="block"
+    >Register as Patient</ion-button
+  >
+  <ion-button
+    (click)="nav.navigateForward('register/employee')"
+    mode="ios"
+    color="warning"
+    expand="block"
+    >Register as Hospital Employee</ion-button
+  >
+  <ion-button
+    (click)="nav.navigateForward('register/admin')"
+    mode="ios"
+    color="success"
+    expand="block"
+    >Register as Hospital Admin</ion-button
+  >
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-button
+    class="no-color-btn"
+    (click)="navigate()"
+    mode="ios"
+    expand="block"
+    >Already Have an Account ?</ion-button
+  >
+</ion-footer>

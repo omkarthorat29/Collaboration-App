@@ -1,0 +1,114 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end" (click)="addTask()" *ngIf="data?.role != 'patient'">
+      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      &nbsp; Add Task
+    </ion-buttons>
+    <ion-buttons
+      slot="end"
+      (click)="addSugar()"
+      *ngIf="data?.role == 'patient'"
+    >
+      <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+      &nbsp; Add Sugar
+    </ion-buttons>
+    <ion-title>Hospital</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <div>
+        <h5 style="letter-spacing: 0.2em; font-size: 2em">
+          {{data?.hospital.hospitalId}}
+        </h5>
+        <h1>{{data?.hospital.name}}</h1>
+        <p>{{data?.hospital.address }} , {{data?.hospital.phone}}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="data?.role != 'patient'">
+    <div>
+      <ion-list-header>
+        <ion-label><h2>Today's Task</h2></ion-label>
+        <ion-button (click)="allTaskNavigate()">View History</ion-button>
+      </ion-list-header>
+      <ion-list class="list">
+        <!-- Multi-line sliding item with icon options on both sides -->
+        <ion-item-sliding *ngFor="let t of tasks">
+          <ion-item>
+            <ion-label
+              class="ion-text-wrap"
+              [class.line]="t.completed"
+              style="font-size: 15px"
+            >
+              {{t.name | titlecase}}
+            </ion-label>
+            <ion-note slot="end"> {{t.createdAt | date:"short"}} </ion-note>
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option color="danger" (click)="delete(t)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+          <ion-item-options side="end">
+            <ion-item-option (click)="completed(t)">
+              <ion-icon slot="icon-only" name="heart"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+  <div *ngIf="data?.role == 'patient' && sugarLevel">
+    <div>
+      <ion-list-header>
+        <ion-label><h2>Sugar Level</h2></ion-label>
+      </ion-list-header>
+      <ion-list class="list">
+        <!-- Multi-line sliding item with icon options on both sides -->
+        <ion-item-sliding *ngFor="let t of sugarLevel.levels">
+          <ion-item>
+            <ion-label
+              class="ion-text-wrap"
+              [class.line]="t.completed"
+              style="font-size: 15px"
+            >
+              {{t.on_time | titlecase}}
+              <p>{{t.createdAt | date:"medium"}}</p>
+            </ion-label>
+
+            <ion-note slot="end" style="font-size: medium; color: #000">
+              {{t.level}}
+            </ion-note>
+            <ion-note
+              slot="end"
+              [class.low]="t.status == 'LOW'"
+              [class.normal]="t.status == 'NORMAL'"
+              [class.high]="t.status == 'HIGH'"
+            >
+              {{t.status}}</ion-note
+            >
+          </ion-item>
+          <ion-item-options side="start">
+            <ion-item-option color="danger" (click)="delete(t)">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+          <ion-item-options side="end">
+            <ion-item-option (click)="completed(t)">
+              <ion-icon slot="icon-only" name="heart"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+
+  <ion-button (click)="logout()" expand="block" fill="clear" shape="round">
+    Log Out
+  </ion-button>
+</ion-content>

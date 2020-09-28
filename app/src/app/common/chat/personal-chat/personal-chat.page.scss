@@ -1,0 +1,67 @@
+ion-header {
+  ion-toolbar {
+    border: none;
+  }
+  border-bottom: 1px solid gainsboro;
+}
+
+ion-toolbar {
+  text-align: center;
+  padding: 5px 5px;
+  border-top: 1px solid gainsboro;
+  display: flex;
+  ion-icon {
+    transition: background 0.8s;
+    align-self: center;
+    // margin: 0px 5px;
+
+    padding: 13px;
+    font-size: 13px !important;
+
+    border-radius: 25px;
+    background-color: rgb(218, 213, 213);
+  }
+
+  ion-icon:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+.send {
+  padding: 10px;
+  ion-col {
+    padding: 10px;
+    border: none;
+    background-color: gainsboro;
+    border-radius: 10px;
+  }
+}
+.receive {
+  padding: 10px;
+  ion-col {
+    padding: 10px;
+    border: 1px solid gainsboro;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+  }
+}
+.text-area {
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #422918;
+  width: 100%;
+  resize: none;
+  padding: 10px 10px;
+  font-size: 1.1em;
+  height: 0% !important;
+
+  border: none;
+  background-color: gainsboro;
+  border-radius: 10px;
+}
+
+.longPressedRow {
+  transition: 0.2s;
+  background: #c5f2ffeb;
+}

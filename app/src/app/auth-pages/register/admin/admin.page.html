@@ -1,0 +1,37 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="heading"
+      >Register in to <br />
+      Suvarsh Technology</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="input">
+    <div class="label">Full Name</div>
+    <ion-input [(ngModel)]="data.fullname" type="text"></ion-input>
+  </div>
+  <div class="input">
+    <div class="label">Email</div>
+    <ion-input [(ngModel)]="data.email" type="email"></ion-input>
+  </div>
+  <div class="input">
+    <div class="label">Password</div>
+    <ion-input [(ngModel)]="data.password" type="password"></ion-input>
+  </div>
+  <div class="input">
+    <div class="label">Phone Number</div>
+    <ion-input [(ngModel)]="data.phone" type="text"></ion-input>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <label slot="start" (click)="navigate()" class="no-color-btn" mode="ios"
+      >Already have an account ?</label
+    >
+    <ion-button slot="end" class="prime-btn" (click)="register()" mode="ios"
+      >Register</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Patient's Sugar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid
+    *ngFor="let s of sugarLevels"
+    class="ion-padding"
+    (click)="presentModal(s.userData)"
+  >
+    <div>
+      <h6>{{s.userData.fullname}}</h6>
+      <p>{{s.updatedAt | date:"medium"}}</p>
+    </div>
+    <ion-row *ngFor="let l of s.levels">
+      <ion-col>
+        <div>{{l.on_time}}</div>
+      </ion-col>
+      <ion-col>
+        <div
+          [class.low]="l.status == 'LOW'"
+          [class.normal]="l.status == 'NORMAL'"
+          [class.high]="l.status == 'HIGH'"
+        >
+          {{l.status}}
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>{{l.level}}</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
