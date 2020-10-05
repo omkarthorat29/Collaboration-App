@@ -5,7 +5,7 @@ import { Platform } from "@ionic/angular";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { AuthService } from "./services/auth.service";
-import { Router } from "@angular/router";
+import { NavigationEnd, Router } from "@angular/router";
 import {
   LocalNotifications,
   ELocalNotificationTriggerUnit,
@@ -41,6 +41,13 @@ export class AppComponent {
       this.splashScreen.hide();
       this.auth.authenticationState.subscribe((state) => {
         this.load(state);
+      });
+      this.router.events.subscribe((val) => {
+        if (val instanceof NavigationEnd && this.router.url === "/login") {
+          this.auth.authenticationState.subscribe((state) => {
+            if (state) this.load(state);
+          });
+        }
       });
       this.localNotifications.on("click").subscribe((res) => {
         console.log("res........", res);
@@ -119,7 +126,7 @@ export class AppComponent {
           }
         });
     } else {
-      this.router.navigate(["login"]);
+      this.router.navigateByUrl("login");
     }
   }
 

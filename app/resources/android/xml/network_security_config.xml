@@ -3,6 +3,6 @@
    <base-config cleartextTrafficPermitted="true"/> 
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
-  <domain includeSubdomains="true">192.168.0.2</domain>
+  <domain includeSubdomains="true">ec2-13-235-19-76.ap-south-1.compute.amazonaws.com</domain>
     </domain-config>
 </network-security-config>

@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: "/main/main/recharge",
+    redirectTo: "/main/main/dashboard",
     pathMatch: "full",
   },
 ];

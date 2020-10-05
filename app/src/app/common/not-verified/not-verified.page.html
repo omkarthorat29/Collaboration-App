@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>not-verified</ion-title>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Validity</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <div style="text-align: center">
+    <ion-text color="dark">
+      <h1>Your account is not verified</h1>
+      <h5>Please contact hospital administration</h5>
+      <span>😀</span>
+      <ion-button
+        class="ion-padding"
+        (click)="this.auth.logout()"
+        expand="block"
+        shape="round"
+      >
+        Log Out
+      </ion-button>
+    </ion-text>
+  </div>
 </ion-content>

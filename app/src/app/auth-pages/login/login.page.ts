@@ -4,6 +4,7 @@ import {
   LoadingController,
   AlertController,
   NavController,
+  Platform,
 } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { NgxSpinnerService } from "ngx-spinner";
@@ -19,8 +20,10 @@ export class LoginPage implements OnInit {
     password: "",
   };
   loading;
+  subscription: any;
   constructor(
     public auth: AuthService,
+    public platform: Platform,
     public spinner: NgxSpinnerService,
     public loadingController: LoadingController,
     public alertController: AlertController,
@@ -71,5 +74,17 @@ export class LoginPage implements OnInit {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("entered again...........");
+  }
+
+  ionViewDidEnter() {
+    this.subscription = this.platform.backButton.subscribe(() => {
+      navigator["app"].exitApp();
+    });
+  }
+
+  ionViewWillLeave() {
+    this.subscription.unsubscribe();
+  }
 }

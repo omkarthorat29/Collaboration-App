@@ -108,6 +108,7 @@ export class EmployeePage implements OnInit {
             fullname: "",
             phone: "",
           };
+          this.auth.presentToast("Registered Successfully! Please Login now");
         }
       })
       .add(() => this.loadingController.dismiss());

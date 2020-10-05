@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     path: "main",
     loadChildren: () =>
       import("./main/main.module").then((m) => m.MainPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: "create-hospital",
@@ -93,6 +95,7 @@ const routes: Routes = [
       import("./employee-main/employee-main.module").then(
         (m) => m.EmployeeMainPageModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: "patient-main",
@@ -100,6 +103,7 @@ const routes: Routes = [
       import("./patient-main/patient-main.module").then(
         (m) => m.PatientMainPageModule
       ),
+    canActivate: [AuthGuard],
   },
   {
     path: "not-verified",
@@ -116,8 +120,11 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'forward',
-    loadChildren: () => import('./common/chat/forward/forward.module').then( m => m.ForwardPageModule)
+    path: "forward",
+    loadChildren: () =>
+      import("./common/chat/forward/forward.module").then(
+        (m) => m.ForwardPageModule
+      ),
   },
 ];
 

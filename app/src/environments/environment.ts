@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  url: "http://192.168.0.2:5000/api",
-  socketUrl: "http://192.168.0.2:5000",
+  url: "http://ec2-13-235-19-76.ap-south-1.compute.amazonaws.com:5000/api",
+  socketUrl: "http://ec2-13-235-19-76.ap-south-1.compute.amazonaws.com:5000",
 };
 
 /*

@@ -13,7 +13,7 @@
 
   <ion-item
     *ngFor="let a of user"
-    style="cursor: pointer;"
+    style="cursor: pointer"
     (click)="this.rt.navigateByUrl('personal-chat/'+a._id+'/'+a.role)"
   >
     <ion-avatar slot="start">
@@ -23,10 +23,5 @@
       ><h2>{{a.fullname | titlecase}}</h2>
       <p>{{a.email}}</p>
     </ion-label>
-    <p>
-      <span style="color: rgb(85, 136, 34);" class="ion-float-right"
-        >online</span
-      >
-    </p>
   </ion-item>
 </ion-content>
