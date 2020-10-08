@@ -9,10 +9,10 @@
 
 <ion-content>
   <!-- Searchbar with cancel button shown on focus -->
-  <ion-searchbar mode="ios"></ion-searchbar>
+  <ion-searchbar (ionInput)="findEL($event)" mode="ios"></ion-searchbar>
 
   <ion-item
-    *ngFor="let a of user"
+    *ngFor="let a of recentUsers"
     style="cursor: pointer"
     (click)="this.rt.navigateByUrl('personal-chat/'+a._id+'/'+a.role)"
   >

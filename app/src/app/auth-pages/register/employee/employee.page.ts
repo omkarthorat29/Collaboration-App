@@ -20,10 +20,20 @@ export class EmployeePage implements OnInit {
   };
 
   roles = [
-    { name: "Doctor", role: "doctor" },
+    { name: "Doctors", role: "doctors" },
     { name: "Nurse", role: "nurse" },
-    { name: "Receptionist", role: "receptionist" },
-    { name: "Pharmacist", role: "Pharmacist" },
+    { name: "Receptionists", role: "receptionists" },
+    { name: "Pharmacists", role: "Pharmacists" },
+    { name: "House Staff", role: "House Staff" },
+    { name: "Advocate", role: "Advocate" },
+    { name: "Physicians", role: "Physicians" },
+    { name: "Technicians", role: "Technicians" },
+    { name: "Therapists", role: "Therapists" },
+    { name: "Pathologists", role: "Pathologists" },
+    { name: "House Staff", role: "House Staff" },
+    { name: "Workers", role: "Workers" },
+    { name: "Dietitians", role: "Dietitians" },
+    { name: "Accounts", role: "Accounts" },
   ];
   loading: any;
   hosp: any;
@@ -94,7 +104,7 @@ export class EmployeePage implements OnInit {
       return;
     }
     this.presentLoading();
-
+    console.log("register data---", this.data);
     this.auth
       .register(this.data)
       .subscribe((data) => {

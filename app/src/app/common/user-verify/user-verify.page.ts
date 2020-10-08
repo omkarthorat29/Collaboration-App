@@ -16,6 +16,7 @@ export class UserVerifyPage implements OnInit {
   verify = "no";
 
   copy: any;
+  recentUsers: any;
   constructor(
     private route: ActivatedRoute,
     public hospital: HospitalService,
@@ -43,6 +44,7 @@ export class UserVerifyPage implements OnInit {
             if (d) {
               this.user = d;
               this.copy = this.user.filter((el) => el.verified == this.verify);
+              this.recentUsers = this.copy;
             }
           });
       });
@@ -51,6 +53,7 @@ export class UserVerifyPage implements OnInit {
   onSelectChange(e) {
     let value = e.detail.value;
     this.copy = this.user.filter((el) => el.verified == value);
+    this.recentUsers = this.copy;
   }
 
   async presentModal(a) {
@@ -62,5 +65,18 @@ export class UserVerifyPage implements OnInit {
       },
     });
     return await modal.present();
+  }
+
+  findEL(event) {
+    if (event.target.value.length === 0) {
+      this.copy = this.recentUsers;
+    } else {
+      this.copy = this.recentUsers.filter(function (data) {
+        return data.fullname
+          .toLowerCase()
+          .trim()
+          .includes(event.target.value.toLowerCase().trim());
+      });
+    }
   }
 }

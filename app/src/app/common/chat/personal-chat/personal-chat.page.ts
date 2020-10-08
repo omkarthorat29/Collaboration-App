@@ -27,6 +27,7 @@ import { File } from "@ionic-native/file/ngx";
 import { NgxSpinnerService } from "ngx-spinner";
 import { Storage } from "@ionic/storage";
 import { ForwardPage } from "../forward/forward.page";
+import { EditUserPage } from "./../../edit-user/edit-user.page";
 
 @Component({
   selector: "app-personal-chat",
@@ -363,5 +364,16 @@ export class PersonalChatPage implements OnInit, OnDestroy {
     setTimeout(() => {
       this.getMessage(this.FIRST_LIMIT, true);
     }, 1000);
+  }
+
+  async presentUserModal(a) {
+    const modal = await this.modalController.create({
+      component: EditUserPage,
+      cssClass: "my-custom-class",
+      componentProps: {
+        data: a,
+      },
+    });
+    return await modal.present();
   }
 }

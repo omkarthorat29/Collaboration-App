@@ -12,6 +12,8 @@ import { Platform } from "@ionic/angular";
 export class RoleListPage implements OnInit {
   role: any;
   user: any;
+  recentUsers: any;
+  mainCopy: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,8 +41,8 @@ export class RoleListPage implements OnInit {
             let d = await data;
 
             if (d) {
-              console.log(d);
-              this.user = d.filter((el) => el._id != this.auth.id);
+              this.recentUsers = d.filter((el) => el._id != this.auth.id);
+              this.mainCopy = d.filter((el) => el._id != this.auth.id);
             }
           });
       });
@@ -48,5 +50,18 @@ export class RoleListPage implements OnInit {
 
   back() {
     this.rt.navigateByUrl("/main/main/chat-user-list");
+  }
+
+  findEL(event) {
+    if (event.target.value.length === 0) {
+      this.recentUsers = this.mainCopy;
+    } else {
+      this.recentUsers = this.mainCopy.filter((el) => {
+        return el.fullname
+          .toLowerCase()
+          .trim()
+          .includes(event.target.value.toLowerCase().trim());
+      });
+    }
   }
 }

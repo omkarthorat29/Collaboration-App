@@ -20,12 +20,12 @@
 
 <ion-content>
   <!-- Searchbar with cancel button shown on focus -->
-  <ion-searchbar mode="ios"></ion-searchbar>
+  <ion-searchbar (ionInput)="findEL($event)" mode="ios"></ion-searchbar>
 
   <ion-item
     *ngFor="let a of copy"
     (click)="presentModal(a)"
-    style="cursor: pointer;"
+    style="cursor: pointer"
   >
     <ion-avatar slot="start">
       <img src="{{a.profile || '../../../assets/avatar.png'}}" />

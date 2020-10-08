@@ -87,4 +87,32 @@ export class LoginPage implements OnInit {
   ionViewWillLeave() {
     this.subscription.unsubscribe();
   }
+
+  // addu() {
+  //   let du = {
+  //     email: `doctor2@hospital.com`,
+  //     fullname: "Fred Yagi",
+  //     hospitalId: "7654305806",
+  //     password: "1234",
+  //     phone: "9970525069",
+  //     role: "doctors",
+  //   };
+  //   let arr = [];
+  //   let i = 1;
+  //   arr.forEach((element) => {
+  //     this.auth
+  //       .register({
+  //         email: `Physicians${i++}@hospital.com`,
+  //         fullname: element,
+  //         hospitalId: "7654305806",
+  //         password: "1234",
+  //         phone: "9970525069",
+  //         role: "Physicians",
+  //         verified: "yes",
+  //       })
+  //       .subscribe((data) => {
+  //         console.log(data);
+  //       });
+  //   });
+  // }
 }
