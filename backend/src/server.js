@@ -46,9 +46,7 @@ app.use("/api/image/", imageUpload);
 app.use("/api/document/", docUpload);
 app.use("/api/patient/", patient);
 
-// `mongodb://omkarthorat29:${encodeURIComponent(
-//   "omkar@1998"
-// )}@13.127.156.159:27017/suvarsh?authSource=admin`
+
 mongoose.connect(config.db, {
   useNewUrlParser: true,
   useCreateIndex: true,
