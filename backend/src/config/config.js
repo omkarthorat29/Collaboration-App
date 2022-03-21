@@ -1,4 +1,4 @@
 module.exports = {
-  jwtSecret: "omkar@1998",
+  jwtSecret: "secretkey",
   db: "mongodb://localhost/suvarsh",
 };
